@@ -16,10 +16,11 @@ session_start();
             <div class="civilite">
                 <label> Civilité:
                     <select name="civilite">
+                        <option value="" selected></option>
                         <option value="Mr">Mr</option>
                         <option value="Mme">Mme</option>
                         <option value="Mlle">Mlle</option>
-                        <option value="Dinosaure" selected>Dinosaure</option>
+                        <option value="Dinosaure">Dinosaure</option>
                         <option value="Autre">Autre</option>
                     </select>
                 </label></br>
@@ -34,7 +35,7 @@ session_start();
             </div>
             <div class="email">
                 <label for="email"> Email:</label>
-                <input type="email" id="email" name="email" placeholder=<?php echo email_field_validation($field)?>>
+                <input type="email" id="email" name="email" placeholder="elvis.presley@gmail.com"> <?php echo email_field_validation($field)?>
             </div>
             <div class="raison">
                 <label for="raison">Raison:</label>
@@ -53,7 +54,7 @@ session_start();
             </div>
             <div>
                 <label for="message">Message: </label>
-                <textarea id="message" name="message" rows="5" cols="33">Wop-bop-a-loom-a-boom-bam-boom ! Tutti frutti au rutti, tutti frutti au rutti, tutti frutti au rutti, wop-bop-a-loom-bop-a-boom-bam-boom !</textarea>
+                <textarea id="message" name="message" rows="5" cols="33" placeholder="Wop-bop-a-loom-a-boom-bam-boom ! Tutti frutti au rutti, tutti frutti au rutti, tutti frutti au rutti, wop-bop-a-loom-bop-a-boom-bam-boom !"></textarea>
             </div>
             <button type="submit">Envoyer</button>
         </form> 
@@ -82,9 +83,9 @@ if (submit_validation($_POST)){
     echo("<h2> Message bien reçu ! </h2>");
         file_put_contents("form_submission",print_r($_POST,true));
         print_form_result();
-} //elseif (submit_validation($_POST) == false){
-    //echo("<h2> Wesh, t'as mal remplit le formulaire. </h2>");
-//}
+} elseif (submit_validation($_POST) == false){
+    echo("<h2> Wesh, t'as mal remplit le formulaire. </h2>");
+}
 ?>
 
 <?php include_once("footer.php");?>

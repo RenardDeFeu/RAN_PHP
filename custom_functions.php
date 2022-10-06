@@ -36,22 +36,20 @@ function print_form_result()
 function submit_validation($post_array)
 {
     // Check if the keys of $_POST are declared
-    $counter = 0;
+    $counter = -1;
     if (!empty($post_array)){
         foreach ($post_array as $key => $value){
             if (!empty($post_array[$key])){
                 $counter++;
             }
         };
-        if ($counter == count($post_array)){return true;} else {return false;} 
+        if ($counter == count($post_array)){return true;} else {return false;}
     }
 }
 
 function email_field_validation($field)
 {
     if (!filter_var($_POST[$field], FILTER_VALIDATE_EMAIL) && !empty($_POST)) {
-        return "Email---invalide";} else {
-            return "elvis.presley@gmail.com";
-        }
+        return "Veuillez entrer un email valide";}
 }
 ?>
